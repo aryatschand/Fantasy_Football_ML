@@ -21,7 +21,10 @@ def parseCSV(fileName):
                     tempArr = []
                     for x in row:
                         if "\\" in x :
-                            tempArr.append(x.split('\\')[0].replace("*", "").replace("+", ""))
+                            toAdd = x.split('\\')[0].replace("*", "").replace("+", "")
+                            if toAdd[len(toAdd)-1] == " ":
+                                toAdd = toAdd[0: len(toAdd)-1]
+                            tempArr.append(toAdd)
                         else :
                             tempArr.append(x)
                     returnArray.append(tempArr)
